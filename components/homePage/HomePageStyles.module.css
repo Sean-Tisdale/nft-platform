@@ -1,0 +1,18 @@
+.homePageWrapper {
+  color: white;
+  height: 300vh;
+}
+
+.missionStatement {
+  font-size: 1.2em;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 7vh;
+  color: #ededed;
+}
+
+.test {
+  text-align: center;
+  margin-top: 260vh;
+}
