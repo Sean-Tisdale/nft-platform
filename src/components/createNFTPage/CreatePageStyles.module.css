@@ -1,0 +1,39 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-top: 2vh;
+  margin-bottom: 10vh;
+  gap: 4vh;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.input {
+  width: 30.3vw;
+  height: 6vh;
+}
+
+.button {
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border-color: #b01092;
+  color: white;
+  border-radius: 10px;
+  font-size: 1.2em;
+  margin-top: 2vh;
+  width: 12vw;
+  height: 7vh;
+  padding: 10px;
+  box-shadow: 10px 15px 15px black;
+}
+
+.image {
+  max-width: 250px;
+  max-height: 250px;
+}
