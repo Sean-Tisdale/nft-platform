@@ -14,6 +14,7 @@ const CreatePage = () => {
   const handleClick = () => {
     inputFile.current?.click()
     console.log(typeof inputFile.current, 'input File')
+    console.log('test 1')
   }
   const handleChange = (e: any) => {
     const file = e.currentTarget.files[0]
