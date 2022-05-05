@@ -17,7 +17,7 @@ export const network = new Network({
 })
 
 export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: RPC_URLS[1] },
+  rpc: { 4: RPC_URLS[4] },
   bridge: 'https://bridge.walletconnect.org',
   supportedChainIds: [1, 4],
 })

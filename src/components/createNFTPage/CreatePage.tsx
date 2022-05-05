@@ -1,10 +1,7 @@
-import { useC } from 'lib/hooks/useC'
 import React, { useEffect, useRef, useState } from 'react'
 import NavBar from '../navBar/NavBar'
 import createPageStyles from './/CreatePageStyles.module.css'
-import { useWeb3React } from '@web3-react/core'
 import { uploadMetadata } from 'lib/hooks/uploadMetadata'
-import { pinFileToIPFS } from 'lib/hooks/pinFileToIPFS'
 
 const CreatePage = () => {
   const [imageDisplay, setImageDisplay] = useState<any>()
@@ -13,7 +10,6 @@ const CreatePage = () => {
   const [fileToUpload, setFileToUpload] = useState<File>()
 
   const inputFile: any = useRef<HTMLInputElement>(null)
-  const { account } = useWeb3React()
 
   const handleClick = () => {
     inputFile.current?.click()
@@ -25,45 +21,6 @@ const CreatePage = () => {
     setFileToUpload(file)
     console.log(typeof file, 'file handle change')
   }
-  // const addFile: any = (file: File) => {
-  //   const img = new FileReader()
-
-  //   img.onload = function () {
-  //     let image = `url("${img.result}")`
-  //     img.readAsDataURL(file)
-  //     return setImageDisplay(image)
-  //   }
-  // }
-  // function asyncFileReader(
-  //   inputFile: File
-  // ): Promise<ArrayBuffer | string | null> {
-  //   const temporaryFileReader = new FileReader()
-
-  //   return new Promise(resolve => {
-  //     temporaryFileReader.onload = () => {
-  //       resolve(temporaryFileReader.result)
-  //     }
-  //     temporaryFileReader.readAsText(inputFile)
-  //   })
-  // }
-  // const change = async () => {
-  //   await asyncFileReader(imageDisplay)
-  // }
-  // useEffect(() => {
-  //   if (foo) {
-  //     const img = new FileReader()
-  //     img.onload = () => {
-  //       setImageDisplay(img.result)
-  //      img.readAsDataURL(imageDisplay)
-  //       console.log('fired')
-  //     }
-  //   } else {
-  //     setImageDisplay(null)
-  //     console.log('not fired')
-  //   }
-  // }, [foo])
-
-  //setImageDisplay(e.currentTarget.files[0])
 
   const handleNameInput = (e: any) => {
     setName(e.target.value)
