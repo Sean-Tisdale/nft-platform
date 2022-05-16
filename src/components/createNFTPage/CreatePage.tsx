@@ -1,26 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import NavBar from '../navBar/NavBar'
 import createPageStyles from './/CreatePageStyles.module.css'
 import { uploadMetadata } from 'lib/hooks/uploadMetadata'
+import { useC } from 'lib/hooks/useC'
+import { useWeb3React } from '@web3-react/core'
 
 const CreatePage = () => {
   const [imageDisplay, setImageDisplay] = useState<any>()
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [fileToUpload, setFileToUpload] = useState<File>()
+  const { account } = useWeb3React()
+  const { mintNft } = useC()
 
   const inputFile: any = useRef<HTMLInputElement>(null)
 
   const handleClick = () => {
     inputFile.current?.click()
-    console.log(typeof inputFile.current, 'input File')
-    console.log('test 1')
   }
   const handleChange = (e: any) => {
     const file = e.currentTarget.files[0]
     setImageDisplay(URL?.createObjectURL(file))
     setFileToUpload(file)
-    console.log(typeof file, 'file handle change')
   }
 
   const handleNameInput = (e: any) => {
@@ -29,8 +30,14 @@ const CreatePage = () => {
   const handleDescriptionInput = (e: any) => {
     setDescription(e.target.value)
   }
+ 
   const handleSubmit = async () => {
-    await uploadMetadata(fileToUpload, name, description)
+    if (account) {
+      const data = await uploadMetadata(name, fileToUpload, description) 
+      await mintNft(data) 
+    } else {
+     alert('Please connect wallet')
+    }
   }
 
   return (

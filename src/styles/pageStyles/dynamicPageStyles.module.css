@@ -1,0 +1,67 @@
+.aboutPageWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.cardWrapper {
+  width: fit-content;
+  align-items: center;
+  display: flex;
+    flex-direction: column;
+}
+
+.nftCard {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+   align-items: center;
+    height: 60vh;
+    width: 27vw;
+    background: none;
+    margin-top: 4vh;
+    border-radius: 15px;
+    border: 3px solid #820cd1;
+    box-shadow: 30px 40px 40px black, inset 0px 0px 100px 50px rgba(0, 0, 0, 0.95);
+  }
+  .nftDisplay {
+    margin-top: 4vh;
+    width: 21.5vw;
+    height: 45vh;
+  }
+  .nftTitle {
+    font-weight: bold;
+    text-align: center;
+    line-height: 9vh;
+    text-shadow: 4px 4px 3px black;
+    color: #ffffff;
+    height: 15vh;
+    font-size: 2.4em;
+    width: 100%;
+  }
+  
+  .nftOwner {
+  margin-top: 5vh;
+  color: #ffffff;
+  font-size: 1.2em;
+  width: 85%;
+  line-height: 5vh;
+  text-align: center;
+  text-decoration: underline;
+
+  }
+  .nftInfoWrapper {
+    margin-left: 10vw;
+    line-height: 15vh;
+    margin-top: 8vh;
+  }
+  .descriptionAndTokenId {
+    color: #ffffff;
+    font-size: 1.6em;
+  }
+  
+  .nftContract {
+    color: #ffffff;
+    font-size: 1.4em;
+  }
