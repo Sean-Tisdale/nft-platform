@@ -4,6 +4,7 @@ import createPageStyles from './/CreatePageStyles.module.css'
 import { uploadMetadata } from 'lib/hooks/uploadMetadata'
 import { useC } from 'lib/hooks/useC'
 import { useWeb3React } from '@web3-react/core'
+import Image from 'next/image'
 
 const CreatePage = () => {
   const [imageDisplay, setImageDisplay] = useState<any>()
@@ -47,14 +48,13 @@ const CreatePage = () => {
         <div className={createPageStyles.title}>Create New NFT</div>
         <input
           type="file"
-          accept="image/*"
           ref={inputFile}
           onChange={handleChange}
           style={{ display: 'none' }}
           name="NFT"
           required
         />
-        <img className={createPageStyles.image} src={imageDisplay} />
+        <Image className={createPageStyles.image} src={imageDisplay} />
         <button className={createPageStyles.button} onClick={handleClick}>
           Upload
         </button>
