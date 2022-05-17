@@ -2,7 +2,6 @@ import React from 'react'
 import NavBar from '../navBar/NavBar'
 import styles from './/UserProfileStyles.module.css'
 import { useMoralis } from "react-moralis"
-import { NftQuery } from 'lib/hooks/nftQuery'
 import Link from 'next/link'
 import { UseContractQuery } from 'lib/hooks/useContractQuery'
 
