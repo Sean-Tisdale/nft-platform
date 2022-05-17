@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import HomePage from '../components/homePage/HomePage'
+import LandingPage from './landingPage'
 
 const Home: NextPage = () => {
 
   return (
     <>
-      <HomePage />
+      <LandingPage/>
     </>
   )
 }

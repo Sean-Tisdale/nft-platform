@@ -17,10 +17,10 @@ function HomePage() {
       <div className={styles.homePageWrapper}>
         <div className={styles.topWrapper}>
           <h1 className={styles.missionStatement}>
-            Here at Hope, we believe NFT's should be easily accessible by all.
-            We strive to make browsing, minting, and purchasing NFT’s a breeze.
+            Here at Hope, we believe NFTs should be easily accessible by all.
+            We strive to make browsing, minting, and purchasing NFTs a breeze.
             With a wide variety of creators already displaying their work here,
-            we’re confident you’ll find the perfect artwork to showcase your
+            were confident youll find the perfect artwork to showcase your
             style and personality. Have a look around!
           </h1>
           <Link href="/createNFTPage">
@@ -28,15 +28,15 @@ function HomePage() {
           </Link>
           </div>
           {isAuthenticated ?
-         data.nftMetadata.map((data: any) => (
-          <Link key={data.id} href={`/${data.id}`}>
+         data?.nftMetadata?.map((data: any) => (
+          <Link key={data?.id} href={`/landingPage/${data?.id}`}>
            <div className={styles.nftCard}>
-            <img src={data.image} className={styles.nftDisplay} />
+            <img src={data?.image} className={styles.nftDisplay} />
             <div className={styles.nftDescriptionWrapper}>
               <div className={styles.nftTitle}>
-               {data.name}
+               {data?.name}
               </div>
-              <div className={styles.nftDescription}>{data.description}</div>
+              <div className={styles.nftDescription}>{data?.description}</div>
             </div>
           </div> 
           </Link>

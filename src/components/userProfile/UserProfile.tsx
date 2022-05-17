@@ -11,16 +11,16 @@ function UserProfile() {
   
   const data = UseContractQuery()
 
-const useData = data.nftMetadata
+const useData = data?.nftMetadata
 const currentUser: any[] = []
 
 const funct = (data: any) => {
-if (data.owner === account) {
-  currentUser.push(data)
+if (data?.owner === account) {
+  currentUser?.push(data)
 }
 return currentUser
 }
-  const getOwners = useData.map(funct)
+  const getOwners = useData?.map(funct)
 
 return (
     <>
@@ -28,15 +28,15 @@ return (
       <div className={styles.userProfileWrapper}>
 
        {isAuthenticated && 
-      currentUser.map((data: any) => (
-         <Link key={data.id} href={`/userProfile/${data.id}`}>
+      currentUser?.map((data: any) => (
+         <Link key={data?.id} href={`/userProfile/${data?.id}`}>
            <div  className={styles.nftCard}>
-            <img src={data.image} className={styles.nftDisplay} />
+            <img src={data?.image} className={styles.nftDisplay} />
             <div className={styles.nftDescriptionWrapper}>
               <div className={styles.nftTitle}>
-               {data.name}
+               {data?.name}
               </div>
-              <div className={styles.nftDescription}>{data.description}</div>
+              <div className={styles.nftDescription}>{data?.description}</div>
             </div>
           </div> 
           </Link>
