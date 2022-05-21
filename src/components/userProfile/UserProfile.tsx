@@ -1,34 +1,27 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import NavBar from '../navBar/NavBar'
 import styles from './/UserProfileStyles.module.css'
-import { useMoralis } from "react-moralis"
 import Link from 'next/link'
-import { UseContractQuery } from 'lib/hooks/useContractQuery'
+import  UseContractQuery  from 'lib/hooks/useContractQuery'
+import { useWeb3React } from '@web3-react/core'
 
 function UserProfile() {
   
-  const { isAuthenticated, account } = useMoralis()
+  const { account } = useWeb3React()
   
   const data = UseContractQuery()
 
-const useData = data?.nftMetadata
-const currentUser: any[] = []
 
-const funct = (data: any) => {
-if (data?.owner === account) {
-  currentUser?.push(data)
-}
-return currentUser
-}
-  const getOwners = useData?.map(funct)
+const state = useRef(data?.nftMetadata)
+
 
 return (
     <>
       <NavBar />
       <div className={styles.userProfileWrapper}>
 
-       {isAuthenticated && 
-      currentUser?.map((data: any) => (
+       {account &&
+       state?.current?.map((data: any) => (
          <Link key={data?.id} href={`/userProfile/${data?.id}`}>
            <div  className={styles.nftCard}>
             <img src={data?.image} className={styles.nftDisplay} />

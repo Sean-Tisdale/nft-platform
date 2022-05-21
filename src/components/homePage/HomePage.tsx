@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import NavBar from '../navBar/NavBar'
 import styles from './/HomePageStyles.module.css'
 import { useMoralis } from "react-moralis";
-import { UseContractQuery } from 'lib/hooks/useContractQuery'
+import  UseContractQuery  from 'lib/hooks/useContractQuery'
 
 function HomePage() {
 
-  const { isAuthenticated } = useMoralis()
+  
+  const data = UseContractQuery()
 
-   const data = UseContractQuery()
+
+const state = useRef(data?.nftMetadata)
 
   return (
     <>
@@ -27,8 +29,8 @@ function HomePage() {
             <button className={styles.createButton}>CREATE</button>
           </Link>
           </div>
-          {isAuthenticated ?
-         data?.nftMetadata?.map((data: any) => (
+          {
+         state?.current?.map((data: any) => (
           <Link key={data?.id} href={`/landingPage/${data?.id}`}>
            <div className={styles.nftCard}>
             <img src={data?.image} className={styles.nftDisplay} />
@@ -40,7 +42,7 @@ function HomePage() {
             </div>
           </div> 
           </Link>
-        )): console.log('acount not connected')}
+        ))}
       </div>
     </>
   )

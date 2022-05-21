@@ -5,14 +5,15 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { formatEther } from '@ethersproject/units'
 import walletStyles from './WalletStyles.module.css'
+import { UseEagerConnect } from 'lib/hooks/providerHook';
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [1, 4],
 })
 
 function Wallet() {
-   const { chainId, activate, active, library } = useWeb3React<Web3Provider>()
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout, isUnauthenticated } = useMoralis()
+  const { chainId, activate, library, account } = useWeb3React<Web3Provider>()
+  const { isWeb3Enabled, enableWeb3, isWeb3EnableLoading, authenticate, isAuthenticated, logout  } = useMoralis()
   const [accountNum, setAccountNum] = useState<string>(
     account && isAuthenticated
       ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}`
@@ -75,6 +76,12 @@ function Wallet() {
       await logout();
       console.log("logged out");
     }
+    const triedEager = UseEagerConnect()
+    useEffect(() => {
+      const connectorId = window.localStorage.getItem("connectorId")
+      if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
+        enableWeb3({ provider: connectorId as any})
+      }, [isAuthenticated, isWeb3Enabled])
 
     return (
           <>

@@ -1,3 +1,4 @@
+import { useWeb3React } from '@web3-react/core'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Wallet from '../wallet/Wallet'
@@ -5,6 +6,7 @@ import navStyles from './NavBarStyles.module.css'
 
 function NavBar() {
   const [searchInput, setSearchInput] = useState<string>('')
+  const { account } = useWeb3React()
 
   const handleSearch = () => {
     setSearchInput('')
@@ -40,7 +42,7 @@ function NavBar() {
         <Wallet />
       </div>
       <Link href="/userProfile">
-        <button className={navStyles.navButton}>Profile</button>
+                <button className={navStyles.navButton}>Profile</button>
       </Link>
     </div>
   )

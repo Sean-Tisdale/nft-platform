@@ -1,5 +1,5 @@
 import NavBar from "components/navBar/NavBar"
-import { UseContractQuery } from "lib/hooks/useContractQuery"
+import  UseContractQuery  from "lib/hooks/useContractQuery"
 import { useRouter } from "next/router"
 import styles from "styles/pageStyles/dynamicPageStyles.module.css"
 

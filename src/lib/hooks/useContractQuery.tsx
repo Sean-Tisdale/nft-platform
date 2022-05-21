@@ -1,13 +1,12 @@
-import { useEffect } from "react"
-import { useMoralisQuery, useMoralis } from "react-moralis"
+import { useMoralisQuery } from "react-moralis"
 
 const axios = require('axios')
 
-const nftMetadata:  any[] = []
 
-export function UseContractQuery() {
-    const {isAuthenticating} = useMoralis()    
 
+ function UseContractQuery() {
+
+    const nftMetadata:  any[] = []
     const { fetch } = useMoralisQuery(
         "allNfts",
         (query: { equalTo: (arg0: string, arg1: string) => any }) => query.equalTo("address", "0x4d86562242260a595930252a6b95cfc8cf120442"),
@@ -46,11 +45,9 @@ results?.map(async(data: any) => {
 
 })
     }
-        useEffect(() => {
-            if(isAuthenticating) {
             contractCall()
-            }
-          }, [ isAuthenticating])
-          
+    
           return { nftMetadata }
 }
+
+export default UseContractQuery
