@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import NavBar from '../navBar/NavBar'
 import styles from './/UserProfileStyles.module.css'
 import Link from 'next/link'
-import  UseContractQuery  from 'lib/hooks/useContractQuery'
+import  {UseContractQuery}  from 'lib/hooks/useContractQuery'
 import { useWeb3React } from '@web3-react/core'
 
 function UserProfile() {

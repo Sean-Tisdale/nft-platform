@@ -3,15 +3,13 @@ import Link from 'next/link'
 import NavBar from '../navBar/NavBar'
 import styles from './/HomePageStyles.module.css'
 import { useMoralis } from "react-moralis";
-import  UseContractQuery  from 'lib/hooks/useContractQuery'
+import  {UseContractQuery}  from 'lib/hooks/useContractQuery'
 
 function HomePage() {
 
-  
+  const { isAuthenticated } = useMoralis()
+
   const data = UseContractQuery()
-
-
-const state = useRef(data?.nftMetadata)
 
   return (
     <>
@@ -30,7 +28,7 @@ const state = useRef(data?.nftMetadata)
           </Link>
           </div>
           {
-         state?.current?.map((data: any) => (
+         data?.nftMetadata?.map((data: any) => (
           <Link key={data?.id} href={`/landingPage/${data?.id}`}>
            <div className={styles.nftCard}>
             <img src={data?.image} className={styles.nftDisplay} />
